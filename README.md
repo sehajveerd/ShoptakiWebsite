@@ -1,4 +1,4 @@
-# real-estate-be
+# Real-Estate-Backend
 ETL and backend services for real-estate-ai project
 
 ![Python](https://img.shields.io/badge/Python-3.9-blueviolet)
