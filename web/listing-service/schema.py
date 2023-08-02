@@ -35,22 +35,19 @@ class FilterInput(graphene.InputObjectType):
 
 
 class PropertyQuery(graphene.ObjectType):
-    node = graphene.relay.Node.Field()
-    all_properties = SQLAlchemyConnectionField(Property.connection)
-
-    properties = graphene.List(Property)
-    properties_by_terms = graphene.List(
+    get_all_properties = graphene.List(Property)
+    get_properties_by_terms = graphene.List(
         Property,
         address=graphene.String(description="input address"),
         boundary=graphene.Argument(BoundaryInput, description="input map boundary"),
         filters=graphene.Argument(FilterInput, description="property filters"),
     )
 
-    def resolve_properties(self, info):
+    def resolve_get_all_properties(self, info):
         query = Property.get_query(info)
         return query.all()
 
-    def resolve_properties_by_terms(self, info, **args):
+    def resolve_get_properties_by_terms(self, info, **args):
         query = Property.get_query(info)
 
         # search by address input (state, city, street address, zipcode)
