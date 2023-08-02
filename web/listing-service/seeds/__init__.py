@@ -6,6 +6,18 @@ from .properties import seed_properties, delete_properties
 seed_commands = AppGroup("seed")
 
 
+@seed_commands.command("all")
+def add_all():
+    seed_properties()
+    seed_states()
+
+
+@seed_commands.command("undo_all")
+def add_all():
+    delete_properties()
+    delete_states()
+
+
 @seed_commands.command("add_properties")
 def add_properties():
     seed_properties()

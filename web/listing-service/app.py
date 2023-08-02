@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_graphql import GraphQLView
+from flask_migrate import Migrate
 
 from models import db
 from config import Config
@@ -14,6 +15,7 @@ def create_app():
 
     app.config.from_object(Config)
     db.init_app(app)
+    Migrate(app, db)
 
     app.add_url_rule(
         "/graphql",

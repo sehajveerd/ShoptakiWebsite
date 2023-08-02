@@ -63,7 +63,7 @@ class PropertyQuery(graphene.ObjectType):
         # fuzzy match
         fuzzy_properties = query.filter(PropertyModel.street.ilike(f"%{address}%"))
 
-        # search by latitude and longitude
+        # search by geocoding
         boundaries = geocodeBoundaries("San Francisco")  # default
         if address:
             boundaries = geocodeBoundaries(address)
