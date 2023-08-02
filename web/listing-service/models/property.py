@@ -8,7 +8,7 @@ class Property(db.Model):
     street = db.Column(db.String(255), nullable=False)
     city = db.Column(db.String(30), nullable=False)
     state_id = db.Column(db.Integer, db.ForeignKey("states.id"), nullable=False)
-    zipcode = db.Column(db.String(5), nullable=False)
+    zipcode = db.Column(db.Integer, nullable=False)
     homeStatus = db.Column(db.String(20))
     homeType = db.Column(db.String(20))
     bed = db.Column(db.Integer)
