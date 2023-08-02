@@ -34,48 +34,48 @@ ETL and backend services for real-estate-ai project
 
 1. Clone this repository to your local system
    
-```
-git clone git@github.com:Shoptaki/real-estate-ai-be.git
-```
+	```bash
+	git clone git@github.com:Shoptaki/real-estate-ai-be.git
+	```
 
 2. Create virtual environments
 
-To set up a virtual environment for this project, we’ll first install `virtualenv` with `pip`:
+	To set up a virtual environment for this project, we’ll first install `virtualenv` with `pip`:
    
-```
-pip install virtualenv
-```
+	```bash
+	pip install virtualenv
+	```
+	
+	Then, we’ll create a virtual environment named `venv` and activate it:
 
-Then, we’ll create a virtual environment named `venv` and activate it:
-
-```
-virtualenv venv
-source venv/bin/activate
-```
-  
+	```bash
+	virtualenv venv
+	source venv/bin/activate
+	```
+	  
 3. Install dependencies
    
-Navigate to web/listing service folder and install dependencies for listing service.
-   
-```
-pip install -r requirements.txt
-```
+	Navigate to web/listing service folder and install dependencies for listing service.
+	   
+	```bash
+	pip install -r requirements.txt
+	```
 
 4. Set up your environment variables in the .env file
 
 5. Migrate the database
 
-Run the following commands to set up the database and seed all the data.
-   
-```
-flask db upgrade
-flask seed all
-```
+	Run the following commands to set up the database and seed all the data.
+	   
+	```bash
+	flask db upgrade
+	flask seed all
+	```
 
 6. Start the flask server in the development environment
    
-```
-flask run
-```
+	```
+	flask run
+	```
 
 7. Navigate to `localhost:5000/graphql` for the GraphQL interface
