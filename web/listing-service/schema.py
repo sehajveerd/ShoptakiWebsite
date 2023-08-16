@@ -1,13 +1,20 @@
 import re
 import graphene
-from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
+from graphene_sqlalchemy import SQLAlchemyObjectType
 from models import Property as PropertyModel
+from models import PropertyImage as PropertyImageModel
 from utils.googleMaps import geocodeBoundaries
 
 
 class Property(SQLAlchemyObjectType):
     class Meta:
         model = PropertyModel
+        interfaces = (graphene.relay.Node,)
+
+
+class PropertyImage(SQLAlchemyObjectType):
+    class Meta:
+        model = PropertyImageModel
         interfaces = (graphene.relay.Node,)
 
 
@@ -42,6 +49,14 @@ class PropertyQuery(graphene.ObjectType):
         boundary=graphene.Argument(BoundaryInput, description="input map boundary"),
         filters=graphene.Argument(FilterInput, description="property filters"),
     )
+    get_property_images = graphene.List(
+        PropertyImage, zpid=graphene.Int(description="zpid of the property")
+    )
+
+    def resolve_get_property_images(self, info, zpid):
+        query = PropertyImage.get_query(info)
+        image_urls = query.filter(PropertyImageModel.zpid == zpid).all()
+        return image_urls
 
     def resolve_get_all_properties(self, info):
         query = Property.get_query(info)
