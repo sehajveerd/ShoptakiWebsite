@@ -12,7 +12,7 @@ class Project(db.Model):
     raisedAmount = db.Column(db.Float, nullable=False, default=0)
     riskRating = db.Column(db.Float, nullable=False, default=0)
     comments = db.Column(db.String)
-    investors = db.Column(ARRAY(db.String(20)))
+    investors = db.Column(ARRAY(db.String(50)))
     numOfInvestors = db.Column(db.Integer, nullable=False, default=0)
     minDeposit = db.Column(db.Float, nullable=False, default=0)
     isClosed = db.Column(db.Boolean, nullable=False, default=False)

@@ -1,0 +1,11 @@
+auth0_id,role,email_id,firstName,lastName,address,city,country,zipcode,timezone,phoneNumber,dateOfBirth,citizenshipStatus,ssnNumber,accountType,estimatedNetWorth,investmentExperience,hasInvestedBefore,investmentReasons,investedProjects
+auth0_001,investor,user@example.com,John,Doe,123 Main St,New York,USA,10001,EST,(123) 456-7890,5/15/1990,Citizen,123-45-6789,1,1000000,Experienced,Yes,Diversification,
+auth0_002,investor,user2@example.com,Jane,Smith,456 Elm St,Los Angeles,USA,90001,PST,(987) 654-3210,12/10/1988,Citizen,987-65-4321,2,750000,Intermediate,Yes,Long-term growth,
+auth0_003,admin,admin@example.com,Admin,,789 Oak Ave,Chicago,USA,60601,CST,(555) 123-4567,2/20/1985,Citizen,555-12-3456,1,2000000,Experienced,Yes,Diversification,
+auth0_004,investor,user3@example.com,Michael,Johnson,101 Pine Rd,Miami,USA,33125,EST,(111) 222-3333,8/5/1992,Resident,111-22-3333,3,500000,Novice,No,Income generation,
+auth0_005,investor,user4@example.com,Alice,Williams,222 Cedar St,San Francisco,USA,94102,PST,(999) 888-7777,3/30/1986,Citizen,999-88-7777,2,800000,Experienced,Yes,Diversification,
+auth0_006,investor,user5@example.com,Robert,Jackson,333 Maple Ave,Boston,USA,2116,EST,(777) 666-5555,10/12/1995,Citizen,777-66-5555,3,400000,Intermediate,Yes,Long-term growth,
+auth0_007,investor,user6@example.com,Emily,Miller,444 Oak St,Seattle,USA,98101,PST,(222) 333-4444,6/25/1993,Citizen,222-33-4444,2,600000,Experienced,Yes,Diversification,
+auth0_008,investor,user7@example.com,David,Davis,555 Pine St,Dallas,USA,75201,CST,(888) 999-0000,1/8/1998,Citizen,888-99-0000,1,1500000,Experienced,Yes,Long-term growth,
+auth0_009,investor,user8@example.com,Susan,Anderson,666 Elm Ave,Phoenix,USA,85001,MST,(444) 555-6666,9/18/1989,Citizen,444-55-6666,3,300000,Novice,No,Income generation,
+auth0_010,investor,user9@example.com,James,Moore,777 Oak Rd,Denver,USA,80202,MST,(777) 888-9999,11/3/1991,Citizen,777-88-9999,2,700000,Intermediate,Yes,Diversification,

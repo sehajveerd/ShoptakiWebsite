@@ -102,7 +102,7 @@ def create_app():
     # Manually defined in .env
     app.secret_key = env.get("APP_SECRET_KEY")
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = env.get("DATABASE_URL").replace(
+    app.config["SQLALCHEMY_DATABASE_URI"] = env.get("SQLALCHEMY_DATABASE_URI").replace(
         "postgres://", "postgresql://"
     )
 

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sample</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://js.stripe.com/v3/"></script>
+  </head>
+  <body>
+    <section>
+      <div class="product">
+        <img src="https://photos.zillowstatic.com/fp/132126196c6a59672475d40f033e6b35-uncropped_scaled_within_1536_1152.webp" alt="Sample Crowdfunding Project" />
+        <div class="description">
+          <h3>Sample Crowdfunding Project</h3>
+          <h5>Minimum deposit at $100.00</h5>
+        </div>
+      </div>
+      <form action="/create-checkout-session" method="POST">
+        <div class="input-container">
+          <label for="deposit">Deposit:</label>
+          <input type="number" id="deposit" name="deposit" step="any" placeholder="Enter deposit amount" required>
+        </div>
+        <button type="submit" id="checkout-button">Checkout</button>
+      </form>
+    </section>
+  </body>
+</html>

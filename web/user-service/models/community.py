@@ -12,9 +12,6 @@ class Channel(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     creator_id = db.Column(db.String, db.ForeignKey("users.id"))
     property_id = db.Column(db.Integer, db.ForeignKey("properties.id"))
-    property = db.relationship("Property", back_populates="channel")
-    messages = db.relationship("Message", back_populates="channel")
-    user = db.relationship("UserDetail", back_populates="channels")
 
 
 class Message:
@@ -25,5 +22,3 @@ class Message:
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     channel_id = db.Column(db.Integer, db.ForeignKey("channels.id"))
     sender_id = db.Column(db.String, db.ForeignKey("users.id"))
-    channel = db.relationship("Channel", back_populates="messages")
-    user = db.relationship("UserDetail", back_populates="messages")
