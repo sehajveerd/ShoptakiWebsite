@@ -1,0 +1,11 @@
+id,property_id,totalAmount,raisedAmount,riskRating,comments,investors,numOfInvestors,minDeposit,isClosed,createdAt,updatedAt,closedAt
+1,1,,,0.75,Great opportunity,,,1000,FALSE,8/21/2023 12:00,8/21/2023 12:00,8/21/2024 12:00
+2,2,,,0.85,High potential,,,500,FALSE,8/20/2023 10:30,8/20/2023 10:30,
+3,3,,,0.6,Moderate risk,,,1000,FALSE,8/19/2023 14:45,8/19/2023 14:45,
+4,4,,,0.9,Aggressive growth,,,800,TRUE,8/18/2023 8:20,8/19/2023 15:00,8/19/2023 15:00
+5,5,,,0.7,Steady returns,,,200,FALSE,8/17/2023 16:10,8/17/2023 16:10,
+6,6,,,0.8,Growing market,,,500,FALSE,8/16/2023 11:55,8/16/2023 11:55,
+7,7,,,0.65,Positive outlook,,,1000,FALSE,8/15/2023 9:30,8/15/2023 9:30,
+8,8,,,0.75,Long-term potential,,,1000,FALSE,8/14/2023 13:20,8/14/2023 13:20,
+9,9,,,0.7,Diversified portfolio,,,500,FALSE,8/13/2023 10:15,8/13/2023 10:15,
+10,10,,,0.55,Low risk,,,1000,FALSE,8/12/2023 14:50,8/12/2023 14:50,

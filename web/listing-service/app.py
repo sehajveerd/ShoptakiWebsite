@@ -6,6 +6,7 @@ from models import db
 from config import Config
 from seeds import seed_commands
 from schema import schema
+from utils.consumer import pull_transaction
 
 
 def create_app():
@@ -29,6 +30,12 @@ def create_app():
     @app.route("/")
     def index():
         return "Welcome to Real-Estate-AI!"
+
+    # TODO: For testing purposes only. The consumer.py should be run in another thread.
+    @app.route("/consume")
+    def pull_msg():
+        pull_transaction()
+        return "Transaction processing started"
 
     return app
 

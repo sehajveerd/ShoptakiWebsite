@@ -24,6 +24,3 @@ class UserDetail(db.Model):
     investmentExperience = db.Column(db.String)
     hasInvestedBefore = db.Column(db.String)
     investmentReasons = db.Column(db.String(20))
-    investedProjects = db.Column(ARRAY(db.Integer))
-
-    channels = db.relationship("Channel", back_populates="user")
