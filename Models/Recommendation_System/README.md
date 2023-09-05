@@ -21,7 +21,7 @@ Property Condition: The condition of the property, whether it's new, renovated, 
 Property Category: Categorization of properties based on specific criteria, such as luxury, budget, high-risk, low-risk, etc.
 
 ####
-you can modify no. of required recommended properties in
+you can modify no. of required recommended properties in model.py
 
 ### How to Run the project
 
