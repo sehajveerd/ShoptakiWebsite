@@ -69,7 +69,8 @@ ETL and backend services for real-estate-ai project
 	   
 	```bash
 	flask db upgrade
-	flask seed all
+	flask seed create_tables
+	flask seed add_all
 	```
 
 6. Start the flask server in the development environment
