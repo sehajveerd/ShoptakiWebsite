@@ -1,5 +1,5 @@
 # Real  Estate Financial Metrics
-##Follow These Steps:
+## Follow These Steps:
 
 1. Data Import: The code reads a CSV file containing real estate information, replacing "Not Available" entries with NaN.
 
@@ -18,7 +18,7 @@
 In summary, this script demonstrates data preprocessing, financial analysis, and machine learning modeling for real estate data, providing insights into property investment potential.
 
 
-##Financial Metrics Introduction:
+## Financial Metrics Introduction:
 1. **Annual Return:**
    - The Annual Return represents the expected annual profit or return on investment (ROI) for a real estate property.
    - Formula: `(Net Operating Income - Mortgage Payment) / Property Value`
