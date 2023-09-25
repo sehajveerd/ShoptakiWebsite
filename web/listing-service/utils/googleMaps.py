@@ -11,8 +11,7 @@ class Boundaries:
         self.southwest = {"lat": None, "lng": None}
 
 
-# TODO: This api call should be coded in async way, but it seems to have a conflict with flask io.
-###############          DONE         #################
+# TODO: This api call should be coded in async way, but it seems to have a conflict with flask io. DONE
 
 # Code for Asynchronous API Call to Geocoding API
 async def geocodeBoundaries(address):

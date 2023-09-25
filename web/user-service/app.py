@@ -118,7 +118,7 @@ def create_app():
     # Adding - Swetha Voora
     migrate.init_app(app, db)
 
-    setup_auth0(app)  # Call the function to set up Auth0
+    # setup_auth0(app)  # Call the function to set up Auth0
     setup_graphql(app)  # Call the function to set up the GraphQL endpoint
 
     @app.route("/")

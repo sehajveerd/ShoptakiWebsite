@@ -41,7 +41,6 @@ def create_app():
     def pull_msg():
         pull_transaction()
         return "Transaction processing started"
-
     return app
 
 

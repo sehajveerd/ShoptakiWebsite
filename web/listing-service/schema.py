@@ -86,6 +86,7 @@ class PropertyQuery(graphene.ObjectType):
             PropertyModel.street.ilike(f"%{address}%"))
 
         # search by geocoding
+        # Async call to geocoding function
         boundaries = asyncio.run(geocodeBoundaries("San Francisco"))  # default
         if address:
             boundaries = asyncio.run(
