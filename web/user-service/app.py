@@ -8,7 +8,11 @@ from flask import Flask, redirect, render_template, session, url_for
 from models import userDetail
 from models import db
 from seeds import seed_commands
+
+
+# Adding Flask-Migrate - Swetha Voora
 from flask_migrate import Migrate
+migrate = Migrate()
 
 
 def setup_auth0(app):
@@ -30,6 +34,7 @@ def setup_auth0(app):
         token = oauth.auth0.authorize_access_token()
 
         userinfo_response = oauth.auth0.get(
+            # "https://dev-0at54ebe72reuvqj.us.auth0.com/userinfo"
             "https://dev-jhq504gdcurv16bk.us.auth0.com/userinfo"
         )
         userinfo = userinfo_response.json()
@@ -110,9 +115,10 @@ def create_app():
     app.cli.add_command(seed_commands)
 
     db.init_app(app)
-    Migrate(app, db)
+    # Adding - Swetha Voora
+    migrate.init_app(app, db)
 
-    # setup_auth0(app)  # Call the function to set up Auth0
+    setup_auth0(app)  # Call the function to set up Auth0
     setup_graphql(app)  # Call the function to set up the GraphQL endpoint
 
     @app.route("/")
