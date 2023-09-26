@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_graphql import GraphQLView
 from flask_migrate import Migrate
+from flask_cors import CORS
 
 from models import db
 from config import Config
@@ -23,6 +24,10 @@ def create_app():
         view_func=GraphQLView.as_view("graphql", schema=schema, graphiql=True),
     )
 
+    # Configure CORS to allow requests from your frontend origin
+    CORS(app, resources={
+        r"/graphql": {"origins": "http://localhost:3001"}})
+
     @app.before_request
     def create_tables():
         db.create_all()
@@ -36,7 +41,6 @@ def create_app():
     def pull_msg():
         pull_transaction()
         return "Transaction processing started"
-
     return app
 
 

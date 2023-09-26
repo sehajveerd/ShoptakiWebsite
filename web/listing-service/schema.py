@@ -5,6 +5,7 @@ from models import Property as PropertyModel
 from models import PropertyImage as PropertyImageModel
 from models import Project as ProjectModel
 from utils.googleMaps import geocodeBoundaries
+import asyncio
 
 
 class Property(SQLAlchemyObjectType):
@@ -57,7 +58,8 @@ class PropertyQuery(graphene.ObjectType):
     get_properties_by_terms = graphene.List(
         Property,
         address=graphene.String(description="input address"),
-        boundary=graphene.Argument(BoundaryInput, description="input map boundary"),
+        boundary=graphene.Argument(
+            BoundaryInput, description="input map boundary"),
         filters=graphene.Argument(FilterInput, description="property filters"),
     )
     get_property_images = graphene.List(
@@ -80,12 +82,15 @@ class PropertyQuery(graphene.ObjectType):
             return [exact_property]
 
         # fuzzy match
-        fuzzy_properties = query.filter(PropertyModel.street.ilike(f"%{address}%"))
+        fuzzy_properties = query.filter(
+            PropertyModel.street.ilike(f"%{address}%"))
 
         # search by geocoding
-        boundaries = geocodeBoundaries("San Francisco")  # default
+        # Async call to geocoding function
+        boundaries = asyncio.run(geocodeBoundaries("San Francisco"))  # default
         if address:
-            boundaries = geocodeBoundaries(address)
+            boundaries = asyncio.run(
+                geocodeBoundaries(address))
 
         properties = query.filter(
             PropertyModel.latitude >= boundaries.southwest["lat"],
@@ -135,11 +140,13 @@ class PropertyQuery(graphene.ObjectType):
                 )
             if filters.get("minDaysOnZillow"):
                 properties = properties.filter(
-                    PropertyModel.daysOnZillow >= filters.get("minDaysOnZillow")
+                    PropertyModel.daysOnZillow >= filters.get(
+                        "minDaysOnZillow")
                 )
             if filters.get("maxDaysOnZillow"):
                 properties = properties.filter(
-                    PropertyModel.daysOnZillow <= filters.get("maxDaysOnZillow")
+                    PropertyModel.daysOnZillow <= filters.get(
+                        "maxDaysOnZillow")
                 )
             if filters.get("minLivingArea"):
                 properties = properties.filter(
@@ -164,18 +171,24 @@ class PropertyQuery(graphene.ObjectType):
     get_projects_by_terms = graphene.List(
         Project,
         id=graphene.Int(description="id of the crowdfunding project"),
-        propertyId=graphene.Int(description="property_id of the linked property"),
+        propertyId=graphene.Int(
+            description="property_id of the linked property"),
         isClose=graphene.Boolean(description="whether the project is closed"),
-        maxTotalAmount=graphene.Float(description="max total amount of the project"),
-        minTotalAmount=graphene.Float(description="min total amount of the project"),
-        minDeposit=graphene.Float(description="minimum deposit of the project"),
+        maxTotalAmount=graphene.Float(
+            description="max total amount of the project"),
+        minTotalAmount=graphene.Float(
+            description="min total amount of the project"),
+        minDeposit=graphene.Float(
+            description="minimum deposit of the project"),
         createdAfter=graphene.DateTime(description="created after this time"),
-        closedBefore=graphene.DateTime(description="closed before of the project"),
+        closedBefore=graphene.DateTime(
+            description="closed before of the project"),
         updatedAfter=graphene.DateTime(description="updated after this time"),
     )
 
     get_projects_by_investor = graphene.List(
-        Project, investorEmail=graphene.String(description="auth_0 id of the investor")
+        Project, investorEmail=graphene.String(
+            description="auth_0 id of the investor")
     )
 
     ######## Resolovers for Project Related Queries ########
@@ -223,7 +236,8 @@ class PropertyQuery(graphene.ObjectType):
 
     def resolve_get_projects_by_investor(self, info, investorEmail):
         query = Project.get_query(info)
-        projects = query.filter(ProjectModel.investors.contains([investorEmail])).all()
+        projects = query.filter(
+            ProjectModel.investors.contains([investorEmail])).all()
         return projects
 
 
