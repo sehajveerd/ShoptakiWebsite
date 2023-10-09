@@ -36,7 +36,7 @@ df['investment_risk'] = (
     df['livingArea'] * livingArea_coeff +
     df['lotAreaValue'] * lotAreaValue_coeff +
     df['homeType_num'] * homeType_coeff +
-    df['rentZestimate'].fillna(0) * rentZestimate_coeff  # Fill missing 'rentZestimate' values with 0 for calculation
+    df['rentZestimate'].fillna(0) * rentZestimate_coeff # Fill missing 'rentZestimate' values with 0 for calculation
 )
 
 
