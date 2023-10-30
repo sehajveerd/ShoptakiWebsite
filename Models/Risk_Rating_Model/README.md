@@ -8,7 +8,7 @@ The Python code aims to predict investment risk in real estate based on relevant
 3. Select features, preprocess data, and split it into training and testing sets.
 4. Create three different machine learning models (Linear Regression, Gradient Boosting Regression, and Random Forest Regression) to predict risk scores.
 5. Train models, make predictions, and compute average risk scores.
-6. Save the results in a CSV file, including risk scores and risk levels.
+6. Save the results in a CSV file, including risk scores and risk levels
 
 **Detailed Descriptions of the Three Models:**
 
