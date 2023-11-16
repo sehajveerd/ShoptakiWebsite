@@ -1,3 +1,4 @@
+from operator import indexOf
 import re
 import graphene
 from graphene_sqlalchemy import SQLAlchemyObjectType
@@ -49,6 +50,12 @@ class FilterInput(graphene.InputObjectType):
     maxLivingArea = graphene.Float()
 
 
+class ImgFilterInput(graphene.InputObjectType):
+    zpid = graphene.Int()
+    size = graphene.Int()
+    format = graphene.String()
+
+
 ###################### Query ######################
 
 
@@ -65,6 +72,15 @@ class PropertyQuery(graphene.ObjectType):
     get_property_images = graphene.List(
         PropertyImage, zpid=graphene.Int(description="zpid of the property")
     )
+    get_property_images_by_size_format = graphene.List(
+        PropertyImage,
+        filters=graphene.Argument(
+            ImgFilterInput, description="property image's zpid, size and format filters"),
+    )
+    get_property_by_zpid = graphene.List(
+        Property,
+        zpid=graphene.Int(description="zpid of the property")
+    )
 
     ######## Resolovers for Property Related Queries ########
     def resolve_get_all_properties(self, info):
@@ -76,10 +92,12 @@ class PropertyQuery(graphene.ObjectType):
 
         # search by address input (state, city, street address, zipcode)
         address = args.get("address")
-        # exact match
-        exact_property = query.filter(PropertyModel.street == address).first()
-        if exact_property:
-            return [exact_property]
+
+        # Removed the below code, as it limits the number of resulting properties to 1.
+        # # exact match
+        # exact_property = query.filter(PropertyModel.street == address).first()
+        # if exact_property:
+        #     return [exact_property]
 
         # fuzzy match
         fuzzy_properties = query.filter(
@@ -163,6 +181,32 @@ class PropertyQuery(graphene.ObjectType):
         query = PropertyImage.get_query(info)
         image_urls = query.filter(PropertyImageModel.zpid == zpid).all()
         return image_urls
+
+    def resolve_get_property_images_by_size_format(self, info, **args):
+        query = PropertyImage.get_query(info)
+
+    # TODO : NEED TO COMPLETE THE GRAPHQL QUERY TO GET THE IMAGEURLS BASED ON SIZE AND FORMAT FILTERS TO BE RENDERED ON THE CAROUSEL.
+    # TODO : AND THEN A DIFFERENT SIZE/FORMAT WHEN A USER CLICKS ON THE PICTURE, TO GET A PROPER BIG VIEW
+        filters = args.get("filters")
+        zpid = filters.get("zpid")
+        size = filters.get("size")  # Get size from filters argument
+        format = filters.get("format")  # Get format from filters argument
+
+        if zpid:
+            query = query.filter(PropertyImageModel.zpid == zpid)
+
+        if size and format:
+            # Filter by size and format if both are provided
+            query = query.filter(
+                PropertyImageModel.imageURL.endswith(f'_{size}.{format}'))
+
+        image_urls = query.all()
+        return image_urls
+
+    def resolve_get_property_by_zpid(self, info, zpid):
+        query = Property.get_query(info)
+        propertydetails = query.filter(PropertyModel.zpid == zpid).all()
+        return propertydetails
 
     ######## Crowdfunding Project Related Queries ########
     get_all_projects = graphene.List(Project)

@@ -7,7 +7,8 @@ class Property(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     street = db.Column(db.String(255), nullable=False)
     city = db.Column(db.String(30), nullable=False)
-    state_id = db.Column(db.Integer, db.ForeignKey("states.id"), nullable=False)
+    state_id = db.Column(db.Integer, db.ForeignKey(
+        "states.id"), nullable=False)
     zipcode = db.Column(db.Integer, nullable=False)
     homeStatus = db.Column(db.String(20))
     homeType = db.Column(db.String(20))
@@ -23,6 +24,7 @@ class Property(db.Model):
     rentZestimate = db.Column(db.Float)
     zpid = db.Column(db.Integer, unique=True)
     daysOnZillow = db.Column(db.Integer)
+    description = db.Column(db.String(500))
 
     state = db.relationship("State", back_populates="properties")
     images = db.relationship("PropertyImage", back_populates="property")
