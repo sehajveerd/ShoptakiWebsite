@@ -38,5 +38,7 @@ pip install -r reqyirements.txt
 - Run model.py in Terminal
 - Result will show 10 properties id. 
     (You can fetch details of that id and display for recommendation while working on frontend)
-- To Do: Deploy the model with any Restful API (Django, etc)
+  
+- ToDo: Deploy the model with any Restful API (Django, etc)
+  
 
