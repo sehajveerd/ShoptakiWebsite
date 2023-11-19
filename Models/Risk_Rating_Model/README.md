@@ -29,3 +29,5 @@ The Python code aims to predict investment risk in real estate based on relevant
    - Similar to gradient boosting, it ensembles multiple decision trees for prediction.
    - Predicted results of the model are stored in the `Predicted Score (RF)` column.
    - Predicted results are also normalized and used for risk level categorization.
+
+TODO:focus on underwriting
