@@ -19,7 +19,7 @@ def get_geocode(address, api_key):
 
 
 # Your Google Maps API key
-api_key = "AIzaSyDclHcSFoO7vBM8JjzWJ0lmkWET4NyVgT0"
+api_key = ""
 
 # Replace 'cvs_data.csv' with the path to your CSV file
 csv_file_path = 'property_details_updated_test.csv'
